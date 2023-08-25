@@ -1,0 +1,18 @@
+[0.561s] Invoking command in '/home/vom/ros2_ws/build/velodyne_lidar': PYTHONPATH=/home/vom/ros2_ws/build/velodyne_lidar/prefix_override:/home/vom/ros2_ws/install/velodyne_lidar/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/vom/ros2_ws/build/velodyne_lidar/build --no-deps install_data
+[0.798s] running develop
+[0.950s] running egg_info
+[0.950s] writing velodyne_lidar.egg-info/PKG-INFO
+[0.950s] writing dependency_links to velodyne_lidar.egg-info/dependency_links.txt
+[0.951s] writing entry points to velodyne_lidar.egg-info/entry_points.txt
+[0.951s] writing requirements to velodyne_lidar.egg-info/requires.txt
+[0.951s] writing top-level names to velodyne_lidar.egg-info/top_level.txt
+[0.953s] reading manifest file 'velodyne_lidar.egg-info/SOURCES.txt'
+[0.953s] writing manifest file 'velodyne_lidar.egg-info/SOURCES.txt'
+[0.954s] running build_ext
+[0.954s] Creating /home/vom/ros2_ws/install/velodyne_lidar/lib/python3.10/site-packages/velodyne-lidar.egg-link (link to .)
+[0.955s] Installing lidar_read script to /home/vom/ros2_ws/install/velodyne_lidar/lib/velodyne_lidar
+[0.956s] 
+[0.956s] Installed /home/vom/ros2_ws/build/velodyne_lidar
+[0.956s] running install_data
+[0.956s] copying package.xml -> /home/vom/ros2_ws/install/velodyne_lidar/share/velodyne_lidar
+[0.984s] Invoked command in '/home/vom/ros2_ws/build/velodyne_lidar' returned '0': PYTHONPATH=/home/vom/ros2_ws/build/velodyne_lidar/prefix_override:/home/vom/ros2_ws/install/velodyne_lidar/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/vom/ros2_ws/build/velodyne_lidar/build --no-deps install_data

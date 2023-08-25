@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+resource/velodyne_lidar
+velodyne_lidar/__init__.py
+velodyne_lidar/test.py
+velodyne_lidar.egg-info/PKG-INFO
+velodyne_lidar.egg-info/SOURCES.txt
+velodyne_lidar.egg-info/dependency_links.txt
+velodyne_lidar.egg-info/entry_points.txt
+velodyne_lidar.egg-info/requires.txt
+velodyne_lidar.egg-info/top_level.txt
+velodyne_lidar.egg-info/zip-safe

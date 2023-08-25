@@ -1,0 +1,3 @@
+[console_scripts]
+lidar_read = velodyne_lidar.test:main
+
