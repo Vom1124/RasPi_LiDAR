@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'lidar_read = velodyne_lidar.test:main',
+            'lidar_read = velodyne_lidar.lidar_sub:main',
         ],
     },
 )
