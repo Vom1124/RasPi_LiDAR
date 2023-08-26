@@ -6,7 +6,7 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 
 Pre-Requisites:
 
-  1) Setup the Velodyne LiDAR VLP16 to communicate with the computer running in ROS2. Use the link below to setup the Ethernet connection, which is section 1. Ignore the rest of the sections and continue here to finish the setup. Remember to verify the connection configuration by 
+  1) Setup the Velodyne LiDAR VLP16 to communicate with the computer running in ROS2. Use the link below to setup the Ethernet connection, which is section 1. Ignore the rest of the sections and continue here to finish the setup. Remember to verify the connection configuration by accessing the LiDAR's network address in any browser.
 
           http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20Velodyne%20VLP16
      
