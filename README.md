@@ -51,9 +51,9 @@ While the velodyne launch file is still running, open a new terminal window and 
 to start RViz with the velodyne as fixed frame.
 
 Then,
-    1) In the "displays" panel, click "Add", then select "PointCloud2" from the velodyne_points topic under "By topic" selections, then press "OK".
-    2) In the "Topic" field of the new "Point Cloud2" tab, enter "/velodyne_points".
-    3) Congratulations. Now, your Velodyne is ready to build the "real" world inside your system. Enjoy it.
+    1) In the "displays" panel, click "Add", then hover to the "By topic" under the pop-up window.
+    2) /velodyne_points topic should be avilable (while the velodyne node  is launched and still running) and select PointCloud2 under this topic and hit "OK".
+    3) Kudos! the laser scan points of your environment should now be visible in the visualization map.
 
         
 
