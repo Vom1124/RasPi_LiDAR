@@ -4,7 +4,7 @@
 This example implements Velodyne VLP 16 LiDAR in  ROS2 Humble OS operating Ubuntu 22.04 LTS.
 There are some pre-setup to connect the Velodyne LiDAR to the computer using Ethernet cable in ROS2 environment. 
 
-Pre-Requisites:
+  Pre-Requisites:
 
   1) Setup the Velodyne LiDAR VLP16 to communicate with the computer running in ROS2. Use the link below to setup the Ethernet connection, which is section 1. Ignore the rest of the sections and continue here to finish the setup. Remember to verify the connection configuration by accessing the LiDAR's network address in any browser.
 
@@ -18,13 +18,46 @@ Pre-Requisites:
 
 Clone this directory as a ros2_ws and build it. 
 
-          
-
+          git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
+          cd RasPi_LiDAR && \
+          colcon build --symlink-install
 If there exists a ros2 workspace, then simply clone only the package into the exisitng ros2 workspace. 
 
-Once the pre-setup are done, the Velodyne LiDAR is launched using the launch file located under /opt/ros/humble/share/velodyne/launch/velodyne-all-nodes-VLP16-launch.py as
+
+Once the pre-setup and cloning the workspace are done, open a new terminal and launch the Velodyne LiDAR using the launch file located under /opt/ros/humble/share/velodyne/launch/velodyne-all-nodes-VLP16-launch.py as
 
           ros2 launch velodyne velodyne-all-nodes-VLP16-launch.py
+
+The available ros topics can be seen using
+
+          ros2 topic list -t
+which should now show velodyne_packets for raw data packets and velodyne_points for displaying point cloud.
+          
+Now, open another terminal window and start the ros2 node  as shown below to acquire the point cloud points and write it to a .txt file. 
+
+          ros2 run velodyne_lidar lidar_read
+
+The Velodyne LiDAR should now successfully run continuously and subsribe to the pointcloud and save it in a text file. 
+
+
+Visualizing the point cloud in RViz:
+
+The point cloud can also be visualized using RViz software with the following steps.
+
+While the velodyne launch file is still running, open a new terminal window and run
+
+        ros2 run rviz2 rviz2 -f velodyne
+
+to start RViz with the velodyne as fixed frame.
+
+Then,
+    1) In the "displays" panel, click "Add", then select "PointCloud2" from the velodyne_points topic under "By topic" selections, then press "OK".
+    2) In the "Topic" field of the new "Point Cloud2" tab, enter "/velodyne_points".
+    3) Congratulations. Now, your Velodyne is ready to build the "real" world inside your system. Enjoy it.
+
+        
+
+
 
 
 
