@@ -16,4 +16,16 @@ Pre-Requisites:
 
           sudo apt-get install ros-humble-velodyne
 
+Clone this directory as a ros2_ws and build it. 
+
+          
+
+If there exists a ros2 workspace, then simply clone only the package into the exisitng ros2 workspace. 
+
+Once the pre-setup are done, the Velodyne LiDAR is launched using the launch file located under /opt/ros/humble/share/velodyne/launch/velodyne-all-nodes-VLP16-launch.py as
+
+          ros2 launch velodyne velodyne-all-nodes-VLP16-launch.py
+
+
+
 
