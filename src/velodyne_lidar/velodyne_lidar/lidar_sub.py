@@ -4,7 +4,7 @@ import rclpy
 from rclpy.node import Node
 from velodyne_msgs.msg import VelodyneScan
 from sensor_msgs.msg import PointCloud2 
-from laser_geometry import LaserProjection
+#from laser_geometry import LaserProjection
 import numpy as np
 
 fd = False
