@@ -37,7 +37,7 @@ Now, open another terminal window and start the ros2 node  as shown below to acq
 
           ros2 run velodyne_lidar lidar_read
 
-The Velodyne LiDAR should now successfully run continuously and subsribe to the pointcloud and save it in a text file. 
+The Velodyne LiDAR should now successfully run continuously and subsribe to the pointcloud and save it in a text file named "px_output.txt" under the home directory. 
 
 
 Visualizing the point cloud in RViz:
