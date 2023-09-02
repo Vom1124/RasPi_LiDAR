@@ -16,6 +16,10 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 
           sudo apt-get install ros-humble-velodyne
 
+  3) Installing the ros2-numpy for viewing/parsing the output  point cloud data in the python node
+
+          pip3 install ros2-numpy
+
 Clone this directory as a ros2_ws and build it. 
 
           git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
