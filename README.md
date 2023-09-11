@@ -1,6 +1,7 @@
 # RasPi_LiDAR
 # This is an example ROS2 node to acquire pointcloud from Velodyne LiDAR and secondary goal to visualize it in RViz.
 
+
 This example implements Velodyne VLP 16 LiDAR in  ROS2 Humble OS operating Ubuntu 22.04 LTS.
 There are some pre-setup to connect the Velodyne LiDAR to the computer using Ethernet cable in ROS2 environment. 
 
@@ -42,6 +43,9 @@ Now, open another terminal window and start the ros2 node  as shown below to acq
           ros2 run velodyne_lidar lidar_read
 
 The Velodyne LiDAR should now successfully run continuously and subsribe to the pointcloud and save it in a text file named "pc_output.txt" under the home directory. 
+
+The output data is printed as range and angles from the spherical coordinates. If one should require raw point cloud data it can be printed in the output text file by modifying the range_data from line 69 from the subscriber "lidar_sub" under the directory "src/velodyne_lidar/velodyne_lidar/lidar_sub". Three different data output is possible: pc2, xyz, and range data. 'pc2' acquires point cloud data including the ring and intensity, whereas 'xyz' simply outputs the x,y, and z coorindates. 'range_data' converts the 'xyz' data to give the range and the angles of projection (alpha and omega from y-axis and z-axis, respectively). So, the line "69" from the file can be set to the variable to achieve desired output data to be saved to a text file.
+   
 
 
 Visualizing the point cloud in RViz:
