@@ -61,12 +61,10 @@ class LiDAR(Node):
         xyz = pc2.get("xyz")        
         pc_to_range_data = pc_to_range.xyz_to_range_and_angle(xyz)
         column_names = list(pc_to_range_data)
-        print(column_names)
         range_data = np.concatenate((pc_to_range_data.get("range"),
                                     pc_to_range_data.get("alpha"),
                                     pc_to_range_data.get("omega")), axis=1)
         range_data = pd.DataFrame(range_data, columns=column_names)
-        print(range_data)
         pd.set_option('display.max_rows', None)# to display all the rows in the DataFrame
         # np.set_printoptions(threshold=sys.maxsize)# to display all the points in the array
         fd.write("\n\n" + str(range_data)+"\n")
