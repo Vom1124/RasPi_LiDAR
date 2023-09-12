@@ -42,7 +42,7 @@ Now, open another terminal window and start the ros2 node  as shown below to acq
 
           ros2 run velodyne_lidar lidar_read
 
-The Velodyne LiDAR should now successfully run continuously and subsribe to the pointcloud and save it in a text file named "range_data.txt" inside this cloned workspace under the home/current directory. 
+The Velodyne LiDAR should now successfully run continuously and subsribe to the pointcloud and save it in a text file named "range_data.txt" under the current directory from where the node is run.
 
 Note: The output data is printed as range and angles from the spherical coordinates. If one should require raw point cloud data it can be printed in the output text file by modifying the range_data from line 70 from the subscriber "lidar_sub" under the directory "src/velodyne_lidar/velodyne_lidar/lidar_sub". Three different data output is possible: pc2, xyz, and range data. 'pc2' acquires point cloud data including the ring and intensity, whereas 'xyz' simply outputs the x,y, and z coorindates. 'range_data' converts the 'xyz' data to give the range and the angles of projection (alpha and omega from y-axis and z-axis, respectively). So, the line "70" from the file can be set to the variable of interest to achieve desired output data to be saved to a text file.
    
