@@ -91,7 +91,8 @@ def main(args=None):
     node = LiDAR()
     global fd
 
-    fd = open("range_data.txt","w")
+    current_directory = os.getcwd()
+    fd = open(current_directory + "/range_data.txt","w")
     
     rclpy.spin(node)
     
