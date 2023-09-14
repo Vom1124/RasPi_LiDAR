@@ -1,5 +1,5 @@
 # RasPi_LiDAR
-# This is an example ROS2 node to acquire pointcloud from Velodyne LiDAR and secondary goal to visualize it in RViz.
+# This is an example ROS2 node to acquire pointcloud from Velodyne LiDAR and publish the resulting distance to the obstacle with a secondary goal to visualize it in RViz.
 
 
 This example implements Velodyne VLP 16 LiDAR in  ROS2 Humble OS operating Ubuntu 22.04 LTS.
