@@ -38,15 +38,14 @@ The available ros topics can be seen using
           ros2 topic list -t
 which should now show velodyne_packets for raw data packets, velodyne_points for displaying point cloud, and ObstacleDetection for getting the distance data from the obstacle(s) in the front.
           
-Now, open another terminal window and start the ros2 node  as shown below to acquire the point cloud points and write it to a .txt file. 
+Now, open another terminal window and start the ros2 node as shown below to acquire the point cloud points and write it to a .txt file. 
 
           ros2 run velodyne_lidar lidar_read
 
-The Velodyne LiDAR should now successfully run continuously and subsribe to the pointcloud and save it in a text file named "range_data.txt" under the current directory from where the node is run.
+The Velodyne LiDAR should now successfully run continuously and subsribe to the pointcloud and save it in a text file named "range_data.txt" under the current directory from where the node is run. Along with it, the obstacle distance from the front of the LiDAR should be published to the ObstacleDistance topic, which can be subsribed for navigation.
 
-Note: The output data is printed as range and angles from the spherical coordinates. If one should require raw point cloud data it can be printed in the output text file by modifying the range_data from line 70 from the subscriber "lidar_sub" under the directory "src/velodyne_lidar/velodyne_lidar/lidar_sub". Three different data output is possible: pc2, xyz, and range data. 'pc2' acquires point cloud data including the ring and intensity, whereas 'xyz' simply outputs the x,y, and z coorindates. 'range_data' converts the 'xyz' data to give the range and the angles of projection (alpha and omega from y-axis and z-axis, respectively). So, the line "70" from the file can be set to the variable of interest to achieve desired output data to be saved to a text file.
+Note: The output data is printed as point cloud message with {xyz, intensity, ring}. If one should require raw range and angles data format it can be printed in the output text file by modifying the "pc2" from line 97 from the subscriber "lidar_sub" under the directory "src/velodyne_lidar/velodyne_lidar/lidar_sub" after uncommenting the range_data section from lines 86-94 Three different data output is possible: pc2, xyz, and range data. 'pc2' acquires point cloud data including the ring and intensity, whereas 'xyz' simply outputs the x,y, and z coorindates. 'range_data' converts the 'xyz' data to give the range and the angles of projection (alpha and omega from y-axis and z-axis, respectively). So, the line "70" from the file can be set to the variable of interest to achieve desired output data to be saved to a text file.
    
-
 
 Visualizing the point cloud in RViz:
 
