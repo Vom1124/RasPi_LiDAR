@@ -36,7 +36,7 @@ Once the pre-setup and cloning the workspace are done, open a new terminal and l
 The available ros topics can be seen using
 
           ros2 topic list -t
-which should now show velodyne_packets for raw data packets and velodyne_points for displaying point cloud.
+which should now show velodyne_packets for raw data packets, velodyne_points for displaying point cloud, and ObstacleDetection for getting the distance data from the obstacle(s) in the front.
           
 Now, open another terminal window and start the ros2 node  as shown below to acquire the point cloud points and write it to a .txt file. 
 
