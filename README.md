@@ -22,7 +22,7 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 
 Setting Up:
 
-      Clone this directory as a ROS2 workspace and build it. 
+          Clone this directory as a ROS2 workspace and build it. 
 
           git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
           cd RasPi_LiDAR && \
