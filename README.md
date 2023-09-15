@@ -20,7 +20,7 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 
           pip3 install ros2-numpy
 
-##### Setting Up:  
+### Setting Up:  
    Clone this directory as a ROS2 workspace and build it.
      
        git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
@@ -45,7 +45,7 @@ The LiDAR parameters can be varied as desired in the VLP16-velodyne_transform_no
                 organize_cloud: true
 
 
-#### Launching/Starting the nodes: 
+### Launching/Starting the nodes: 
 
 Once the pre-setup and cloning the workspace are done, open a new terminal and launch the Velodyne LiDAR using the launch file located under /opt/ros/humble/share/velodyne/launch/velodyne-all-nodes-VLP16-launch.py as
 
@@ -67,7 +67,7 @@ Note: The output data is printed as point cloud message with {xyz, intensity, ri
 Writing the output data to a text file in a USB drive requires sudo login to automatically mount the USB, and thus, the code in the lidar_sub under "src/velodyne_lidar/velodyne_lidar/" has the SudoPassword (line #135 under the pc_writer method) variable which needs to be changed according to the user's system password. 
    
 
-##### Visualizing the point cloud in RViz:
+### Visualizing the point cloud in RViz:
 
 The point cloud can also be visualized using RViz software with the following steps.
 
