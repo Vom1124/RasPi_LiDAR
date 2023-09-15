@@ -25,7 +25,7 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
      
        git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
        cd RasPi_LiDAR && \
-        colcon build --symlink-install
+       colcon build --symlink-install
 
           
 If there exists a ros2 workspace, then simply clone only the package into the exisitng ros2 workspace. 
@@ -67,7 +67,7 @@ Note: The output data is printed as point cloud message with {xyz, intensity, ri
 Writing the output data to a text file in a USB drive requires sudo login to automatically mount the USB, and thus, the code in the lidar_sub under "src/velodyne_lidar/velodyne_lidar/" has the SudoPassword (line #135 under the pc_writer method) variable which needs to be changed according to the user's system password. 
    
 
-Visualizing the point cloud in RViz:
+##### Visualizing the point cloud in RViz:
 
 The point cloud can also be visualized using RViz software with the following steps.
 
