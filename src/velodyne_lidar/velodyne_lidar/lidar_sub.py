@@ -37,8 +37,8 @@ class LiDAR(Node):
         
         # Subscribing to the raw laser scan data from only one laser 
         #    (possibly from the ring number 0 from 0-15 lasers)
-        self.subscribeRawData = self.create_subscription(VelodyneScan, 
-                                    '/velodyne_packets', self.raw_callback, 10)
+        # self.subscribeRawData = self.create_subscription(VelodyneScan, 
+                                    # '/velodyne_packets', self.raw_callback, 10)
         
         head_txt = "\nPoint Cloud Generation Initiated\n"
         fmt_head_txt = head_txt.center(150,'=')
@@ -98,8 +98,8 @@ class LiDAR(Node):
 
         np.set_printoptions(threshold=sys.maxsize)# to display all the points in the array
         fd.write("\n\n XYZIR : {}".format(pc2_data))
-        # fd.write("\n\n==================================="+
-        # "===End of one spin:{}===================================\n\n\n".format(self.counter))
+        fd.write("\n\n==================================="+
+        "===End of one spin:{}===================================\n\n\n".format(self.counter))
         self.get_logger().info("\033[95m" + pc_txt)
         time.sleep(0.1)
         
@@ -130,7 +130,7 @@ class LiDAR(Node):
         fd.write("\n" + str(pc2))
         
         self.get_logger().info("\033[95m" + scan_txt)
-        time. sleep(2)
+        time. sleep(1)
         
 def pc_writer():
     '''
@@ -140,10 +140,10 @@ def pc_writer():
     
     # Logging in as sudo user
     os.system("sudo -k") # First exiting the sudo mode if already in sudo mode
-    SudoPassword = "1124"
-    print("Logging in as sudo user")
-    os.system("echo %s | sudo -s --stdin" %(SudoPassword))
-    print("\nSuccessfully logged in as sudo user!") 
+    sudoPassword = "1124"
+    os.system("echo '\e[7m \e[91m Logging in as sudo user...\e[0m'")
+    os.system("echo %s | sudo -s --stdin" %(sudoPassword))
+    os.system("echo '\n \e[5m \e[32m*Successfully logged in as sudo user!*\e[0m'")
 
     isMountsda = os.path.exists("/dev/sda1")
     isMountsdb = os.path.exists("/dev/sdb1")
@@ -159,8 +159,16 @@ def pc_writer():
         except:
             pass 
         
-        print("INFO: Mount status success: a USB drive is found. The video will be saved to the inserted USB.")
-        os.system("sudo mkdir /media/Veldoyne_LiDAR") # Creating a mount point name
+        os.system("echo '\e[33mINFO: Mount status success: a USB drive is found."\
+            "The point cloud data will be saved to the inserted USB.\e[0m'")
+        
+        #Checking if mount point name already exists (Need to create only on the first run).
+        isMountPointName = os.path.exists("/media/Velodyne_LiDAR")
+        if isMountPointName==True:
+            try:
+                os.system("sudo mkdir /media/Veldoyne_LiDAR") # Creating a mount point name
+            except:
+                pass
         
         '''
         The order of checking the mount is reversed to ensure that there 
