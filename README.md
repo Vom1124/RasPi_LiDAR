@@ -20,15 +20,19 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 
           pip3 install ros2-numpy
 
-Setting Up:
-       
-        
-        
-    Clone this directory as a ROS2 workspace and build it. 
+Setting Up:      
+    
+    
+    
+    
+                                                    Clone this directory as a ROS2 workspace and build it. 
 
+    
           git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
           cd RasPi_LiDAR && \
           colcon build --symlink-install
+
+          
 If there exists a ros2 workspace, then simply clone only the package into the exisitng ros2 workspace. 
 
 The LiDAR parameters can be varied as desired in the VLP16-velodyne_transform_node-params.yaml file located under "/opt/ros/humble/velodyne_pointcloud/config" folder. The current settings chosen during this test was
