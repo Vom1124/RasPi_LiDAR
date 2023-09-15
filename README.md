@@ -71,11 +71,11 @@ Writing the output data to a text file in a USB drive requires sudo login to aut
 
 The point cloud can also be visualized using RViz software with the following steps.
 
-While the velodyne launch file is still running, open a new terminal window and run
+While the velodyne launch file is still running, open a new terminal window and run the below code to start RViz with the velodyne as fixed frame.
 
         ros2 run rviz2 rviz2 -f velodyne
 
-to start RViz with the velodyne as fixed frame.
+
 
 Then,
   1) In the "displays" panel, click "Add", then hover to the "By topic" under the pop-up window.
