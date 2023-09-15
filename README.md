@@ -5,7 +5,7 @@
 This example implements Velodyne VLP 16 LiDAR in  ROS2 Humble OS operating Ubuntu 22.04 LTS.
 There are some pre-setup to connect the Velodyne LiDAR to the computer using Ethernet cable in ROS2 environment. 
 
-  Pre-Requisites:
+ ##### Pre-Requisites:
 
   1) Setup the Velodyne LiDAR VLP16 to communicate with the computer running in ROS2. Use the link below to setup the Ethernet connection, which is section 1. Ignore the rest of the sections and continue here to finish the setup. Remember to verify the connection configuration by accessing the LiDAR's network address in any browser.
 
@@ -20,7 +20,7 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 
           pip3 install ros2-numpy
 
-#### Setting Up:  
+##### Setting Up:  
             Clone this directory as a ROS2 workspace and build it. 
           
             git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
