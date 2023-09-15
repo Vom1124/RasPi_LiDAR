@@ -21,7 +21,8 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
           pip3 install ros2-numpy
 
 ##### Setting Up:  
-  1) Clone this directory as a ROS2 workspace and build it. 
+  1) Clone this directory as a ROS2 workspace and build it.
+  2) 
           
             git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
             cd RasPi_LiDAR && \
