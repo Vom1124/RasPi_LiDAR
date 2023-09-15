@@ -21,6 +21,8 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 
           pip3 install ros2-numpy
 
+Setting Up:
+
 Clone this directory as a ROS2 workspace and build it. 
 
           git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
@@ -43,7 +45,8 @@ The LiDAR parameters can be varied as desired in the VLP16-velodyne_transform_no
                 organize_cloud: true
 
 
-      
+Launching/Starting the nodes: 
+
 Once the pre-setup and cloning the workspace are done, open a new terminal and launch the Velodyne LiDAR using the launch file located under /opt/ros/humble/share/velodyne/launch/velodyne-all-nodes-VLP16-launch.py as
 
           ros2 launch velodyne velodyne-all-nodes-VLP16-launch.py
