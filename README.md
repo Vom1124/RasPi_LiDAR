@@ -45,7 +45,7 @@ The LiDAR parameters can be varied as desired in the VLP16-velodyne_transform_no
                 organize_cloud: true
 
 
-##### Launching/Starting the nodes: 
+#### Launching/Starting the nodes: 
 
 Once the pre-setup and cloning the workspace are done, open a new terminal and launch the Velodyne LiDAR using the launch file located under /opt/ros/humble/share/velodyne/launch/velodyne-all-nodes-VLP16-launch.py as
 
