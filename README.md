@@ -31,16 +31,16 @@ If there exists a ros2 workspace, then simply clone only the package into the ex
 The LiDAR parameters can be varied as desired in the VLP16-velodyne_transform_node-params.yaml file located under "/opt/ros/humble/velodyne_pointcloud/config" folder. The current settings chosen during this test was
 
         velodyne_transform_node:
-    ros__parameters:
-        calibration: VLP16db.yaml
-        model: VLP16
-        min_range: 0.1
-        max_range: 20.0
-        view_direction: 0.0
-        view_width: 0.18
-        fixed_frame: ""
-        target_frame: ""
-        organize_cloud: true
+            ros__parameters:
+                calibration: VLP16db.yaml
+                model: VLP16
+                min_range: 0.1
+                max_range: 20.0
+                view_direction: 0.0
+                view_width: 0.18
+                fixed_frame: ""
+                target_frame: ""
+                organize_cloud: true
 
 
       
