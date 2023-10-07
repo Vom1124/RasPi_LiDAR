@@ -8,7 +8,7 @@ from sensor_msgs.msg import PointCloud2, PointField
 from sensor_msgs.msg import LaserScan
 from laser_geometry import LaserProjection
 import numpy as np
-import pandas as pd
+#import pandas as pd Make sure to install it in the system before using this
 import ros2_numpy as rnp # apt install ros-humble-ros-numpy
 
 # Importing the user-created packages from the ros2 workspace
