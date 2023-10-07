@@ -30,7 +30,7 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
           
 If there exists a ros2 workspace, then simply clone only the package into the exisitng ros2 workspace. 
 
-The LiDAR parameters can be varied as desired in the VLP16-velodyne_transform_node-params.yaml file located under "/opt/ros/humble/velodyne_pointcloud/config" folder. The current settings chosen during this test was
+The LiDAR parameters can be varied as desired in the VLP16-velodyne_transform_node-params.yaml file located under "/opt/ros/humble/lib/velodyne_pointcloud/config" folder. The current settings chosen during this test was
 
         velodyne_transform_node:
             ros__parameters:
