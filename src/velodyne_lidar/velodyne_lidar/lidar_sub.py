@@ -167,12 +167,12 @@ def pc_writer():
         
         if isMountPointName==True:
             try:
-                os.system("rmdir /media/Velodyne_LiDAR")
-                os.system("mkdir /media/Velodyne_LiDAR") # Creating a mount point name
+                os.system("sudo rm -r /media/Velodyne_LiDAR")
+                os.system("sudo mkdir /media/Velodyne_LiDAR") # Creating a mount point name
             except:
                 pass
         elif isMountPointName==False:      
-            os.system("mkdir /media/Velodyne_LiDAR") # Creating a mount point name
+            os.system("sudo mkdir /media/Velodyne_LiDAR") # Creating a mount point name
         '''
         The order of checking the mount is reversed to ensure that there 
         is no problem mounting with already preserved mountpoints by the system.
@@ -189,9 +189,6 @@ def pc_writer():
             mountCommand = " sudo mount /dev/sda1 /media/Velodyne_LiDAR"
             
         os.system(mountCommand)        
-        os.system("sudo mv ~/pc_data.txt /media/Velodyne_LiDAR")
-        
-    
 
 def main(args=None):
     rclpy.init(args=args)
@@ -199,16 +196,22 @@ def main(args=None):
     
     node = LiDAR()
     
-    
-    os.system("sudo -k")
-
-    fd = open("pc_data.txt","wt") # Creating the actual file 
-
-    rclpy.spin(node)
-    rclpy.shutdown()
-    
-    fd.close()
     pc_writer() # Running this method to mount the USB drive properly.
-  
+    fd = open("pc_data.txt","wt") # Creating the actual file 
+	
+    try:
+    	while rclpy.ok():
+    	    rclpy.spin(node)
+    
+    except KeyboardInterrupt:
+    	fd.close()
+    	os.system("sudo mv ~/pc_data.txt /media/Velodyne_LiDAR > /dev/null  2>&1")
+    	os.system(" echo '\e[33mSuccessfully saved the PointCloud data to the USB drive\e[0m' ")
+    	pass
+    	
+    rclpy.shutdown()
+
 if __name__=='__main__':
     main()
+
+    	
