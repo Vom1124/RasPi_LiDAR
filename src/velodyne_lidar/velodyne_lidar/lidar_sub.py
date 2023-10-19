@@ -24,7 +24,12 @@ from example_interfaces.msg import Float32
 #global fd
 fd = False
 
-
+# Logging in as sudo user
+os.system("sudo -k") # First exiting the sudo mode if already in sudo mode
+sudoPassword = "123"
+os.system("echo '\e[7m \e[91m Logging in as sudo user...\e[0m'")
+os.system("echo %s | sudo -i --stdin" %(sudoPassword))
+os.system("echo '\n \e[5m \e[32m*Successfully logged in as sudo user!*\e[0m'")
 
 
 class LiDAR(Node): 
@@ -72,7 +77,7 @@ class LiDAR(Node):
             self.get_logger().info("\033[93:4m" + raw_data_txt)
             print(data)    
             self.get_logger().info("\033[92:4m" + raw_data_txt_conf)    
-            time.sleep(1)    
+            time.sleep(0.1)    
             
     def pc_callback(self, pc2_msg):
         '''
@@ -100,6 +105,7 @@ class LiDAR(Node):
         fd.write("\n\n XYZIR : {}".format(pc2_data))
         fd.write("\n\n==================================="+
         "===End of one spin:{}===================================\n\n\n".format(self.counter))
+        os.system("sudo mv -f ~/pc_data.txt /media/Velodyne_LiDAR > /dev/null 2>&1")
         self.get_logger().info("\033[95m" + pc_txt)
         time.sleep(0.1)
         
@@ -109,7 +115,7 @@ class LiDAR(Node):
         distance_msg = Float32()
         distance_to_obstacle = np.mean(xyz_nav[:,0]).astype('float')
         distance_msg.data = distance_to_obstacle
-        time.sleep(2)
+        time.sleep(0.1)
         
         distance_txt = "Obstacle Distance calculated and publishing to example_interface topic"
         self.get_logger().info("\033[95m" + distance_txt)
@@ -130,20 +136,13 @@ class LiDAR(Node):
         fd.write("\n" + str(pc2))
         
         self.get_logger().info("\033[95m" + scan_txt)
-        time. sleep(1)
+        time. sleep(0.1)
         
 def pc_writer():
     '''
     This section of code helps to create a file inside the USB drive inserted...
     Requires to create a mount point name and then unmount existing drives and re-mount the drive...
     '''
-    
-    # Logging in as sudo user
-    os.system("sudo -k") # First exiting the sudo mode if already in sudo mode
-    sudoPassword = "123"
-    os.system("echo '\e[7m \e[91m Logging in as sudo user...\e[0m'")
-    os.system("echo %s | sudo -i --stdin" %(sudoPassword))
-    os.system("echo '\n \e[5m \e[32m*Successfully logged in as sudo user!*\e[0m'")
 
     isMountsda = os.path.exists("/dev/sda1")
     isMountsdb = os.path.exists("/dev/sdb1")
@@ -162,33 +161,36 @@ def pc_writer():
             "The point cloud data will be saved to the inserted USB.\e[0m'")
         
         #Checking if mount point name already exists (Need to create only on the first run).
-    isMountPointName = os.path.exists("/media/Velodyne_LiDAR")
-    os.system(" sudo chmod -R a+x /media")
+        isMountPointName = os.path.exists("/media/Velodyne_LiDAR")
+        os.system(" sudo chmod -R a+x /media")
         
-    if isMountPointName==True:
-        try:
-            os.system("sudo rm -r /media/Velodyne_LiDAR")
+        if isMountPointName==True:
+            try:
+                os.system("sudo rm -r /media/Velodyne_LiDAR")
+                os.system("sudo mkdir /media/Velodyne_LiDAR") # Creating a mount point name
+            except:
+                pass
+        elif isMountPointName==False:      
             os.system("sudo mkdir /media/Velodyne_LiDAR") # Creating a mount point name
-        except:
-            pass
-    elif isMountPointName==False:      
-        os.system("sudo mkdir /media/Velodyne_LiDAR") # Creating a mount point name
-    '''
-    The order of checking the mount is reversed to ensure that there 
-    is no problem mounting with already preserved mountpoints by the system.
-    For example, if sda is already mounted by the system for some port address, then the access to 
-    mount the sda for USB drive won't exist. So, the further options will be checked, by in the mean time, the sda in the 
-    alphabetical order will throw an error and stop the code. Therefore, the mount check is initiated with sdc.
-    Only three /dev/sd* are used, as atmost three ports will be used simultaneously. 
-    '''
-    if isMountsdc:
-        mountCommand = " sudo mount /dev/sdc1 /media/Velodyne_LiDAR"   
-    elif isMountsdb:
-        mountCommand = " sudo mount /dev/sdb1 /media/Velodyne_LiDAR"
-    elif isMountsda:
-        mountCommand = " sudo mount /dev/sda1 /media/Velodyne_LiDAR"
+        '''
+        The order of checking the mount is reversed to ensure that there 
+        is no problem mounting with already preserved mountpoints by the system.
+        For example, if sda is already mounted by the system for some port address, then the access to 
+        mount the sda for USB drive won't exist. So, the further options will be checked, by in the mean time, the sda in the 
+        alphabetical order will throw an error and stop the code. Therefore, the mount check is initiated with sdc.
+        Only three /dev/sd* are used, as atmost three ports will be used simultaneously. 
+        '''
+        if isMountsdc:
+            mountCommand = " sudo mount /dev/sdc1 /media/Velodyne_LiDAR"   
+        elif isMountsdb:
+            mountCommand = " sudo mount /dev/sdb1 /media/Velodyne_LiDAR"
+        elif isMountsda:
+            mountCommand = " sudo mount /dev/sda1 /media/Velodyne_LiDAR"
+            
+        os.system(mountCommand)        
         
-    os.system(mountCommand)        
+        
+    
 
 def main(args=None):
     rclpy.init(args=args)
@@ -198,21 +200,13 @@ def main(args=None):
     
     pc_writer() # Running this method to mount the USB drive properly.
     fd = open("pc_data.txt","wt") # Creating the actual file 
-
-    try:
-        rclpy.spin(node)
-    except KeyboardInterrupt:
-        fd.close()
-        os.system("sudo mv ~/pc_data.txt /media/Velodyne_LiDAR > /dev/null  2>&1")
-        os.system(" echo '\e[33mSuccessfully saved the PointCloud data to the USB drive\
-                  if one inserted...\e[0m' ")
-
-        pass     
-    except Exception as e:
-        node.get_logger().error(str(e))
-    	
+    
+    rclpy.spin(node)   	
     rclpy.shutdown()
-
+    
+    fd.close()
+       	
+  
 if __name__=='__main__':
     main()
 
