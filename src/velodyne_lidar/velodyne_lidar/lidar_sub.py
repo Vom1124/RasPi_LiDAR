@@ -1,6 +1,8 @@
 import os
 import sys 
 import time
+import subprocess 
+
 import rclpy
 from rclpy.node import  Node
 from velodyne_msgs.msg import VelodyneScan
@@ -19,10 +21,8 @@ from velodyne_lidar import lasers_to_single_laserscan
 
 from example_interfaces.msg import Float32
 
-
+#global fd
 fd = False
-global pc2_data
-pc2_data=False
 
 
 
@@ -140,9 +140,9 @@ def pc_writer():
     
     # Logging in as sudo user
     os.system("sudo -k") # First exiting the sudo mode if already in sudo mode
-    sudoPassword = "1124"
+    sudoPassword = "123"
     os.system("echo '\e[7m \e[91m Logging in as sudo user...\e[0m'")
-    os.system("echo %s | sudo -s --stdin" %(sudoPassword))
+    os.system("echo %s | sudo -i --stdin" %(sudoPassword))
     os.system("echo '\n \e[5m \e[32m*Successfully logged in as sudo user!*\e[0m'")
 
     isMountsda = os.path.exists("/dev/sda1")
@@ -154,22 +154,25 @@ def pc_writer():
 
     if isMountsda==True or isMountsdb==True or isMountsdc==True:     
     #Removing/Unmounting (clearing) already existing mountpoint to avoid overlap in the mount status
-        try: 
-            os.system("sudo umount /dev/sd* > /dev/null  2>&1") # the output will be null.
-        except:
-            pass 
+        
+        os.system("sudo umount -f /dev/sd* > /dev/null  2>&1") # the output will be null.
+
         
         os.system("echo '\e[33mINFO: Mount status success: a USB drive is found."\
             "The point cloud data will be saved to the inserted USB.\e[0m'")
         
         #Checking if mount point name already exists (Need to create only on the first run).
         isMountPointName = os.path.exists("/media/Velodyne_LiDAR")
+        os.system(" sudo chmod -R a+x /media")
+        
         if isMountPointName==True:
             try:
-                os.system("sudo mkdir /media/Veldoyne_LiDAR") # Creating a mount point name
+                os.system("rmdir /media/Velodyne_LiDAR")
+                os.system("mkdir /media/Velodyne_LiDAR") # Creating a mount point name
             except:
                 pass
-        
+        elif isMountPointName==False:      
+            os.system("mkdir /media/Velodyne_LiDAR") # Creating a mount point name
         '''
         The order of checking the mount is reversed to ensure that there 
         is no problem mounting with already preserved mountpoints by the system.
@@ -179,30 +182,33 @@ def pc_writer():
         Only three /dev/sd* are used, as atmost three ports will be used simultaneously. 
         '''
         if isMountsdc:
-            mountCommand = "sudo mount /dev/sdc1 /media/Velodyne_LiDAR"       
+            mountCommand = " sudo mount /dev/sdc1 /media/Velodyne_LiDAR"   
         elif isMountsdb:
-            mountCommand = "sudo mount /dev/sdb1 /media/Velodyne_LiDAR"
+            mountCommand = " sudo mount /dev/sdb1 /media/Velodyne_LiDAR"
         elif isMountsda:
-            mountCommand = "sudo mount /dev/sda1 /media/Velodyne_LiDAR"
+            mountCommand = " sudo mount /dev/sda1 /media/Velodyne_LiDAR"
             
-        os.system(mountCommand)         
+        os.system(mountCommand)        
+        os.system("sudo mv ~/pc_data.txt /media/Velodyne_LiDAR")
+        
     
 
 def main(args=None):
     rclpy.init(args=args)
-    
     global fd # Assigning the output file data name to be global so that the node can access it.
-
+    
     node = LiDAR()
     
-    pc_writer() # Running this method to mount the USB drive properly.
     
-    fd = open("/media/Velodyne_LiDAR/pc_data.txt","wt") # Creating the actual file
-    
+    os.system("sudo -k")
+
+    fd = open("pc_data.txt","wt") # Creating the actual file 
+
     rclpy.spin(node)
     rclpy.shutdown()
     
     fd.close()
+    pc_writer() # Running this method to mount the USB drive properly.
   
 if __name__=='__main__':
     main()
