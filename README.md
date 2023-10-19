@@ -55,7 +55,7 @@ Once the pre-setup and cloning the workspace are done, open a new terminal and l
 Now, open another terminal window and start the ros2 node as shown below to acquire the point cloud points and write it to a .txt file. 
 
           ros2 run velodyne_lidar lidar_read
-      
+The lidar_read node use the lidar_sub.py script under src/velodyne_lidar/velodyne_lidar, which automatically tries to login as sudo user using the password "123" (from line 143). Change it accordingly for different systems.
 The available ros topics can be seen using
 
           ros2 topic list -t
