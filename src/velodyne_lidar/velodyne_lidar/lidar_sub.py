@@ -162,33 +162,33 @@ def pc_writer():
             "The point cloud data will be saved to the inserted USB.\e[0m'")
         
         #Checking if mount point name already exists (Need to create only on the first run).
-        isMountPointName = os.path.exists("/media/Velodyne_LiDAR")
-        os.system(" sudo chmod -R a+x /media")
+    isMountPointName = os.path.exists("/media/Velodyne_LiDAR")
+    os.system(" sudo chmod -R a+x /media")
         
-        if isMountPointName==True:
-            try:
-                os.system("sudo rm -r /media/Velodyne_LiDAR")
-                os.system("sudo mkdir /media/Velodyne_LiDAR") # Creating a mount point name
-            except:
-                pass
-        elif isMountPointName==False:      
+    if isMountPointName==True:
+        try:
+            os.system("sudo rm -r /media/Velodyne_LiDAR")
             os.system("sudo mkdir /media/Velodyne_LiDAR") # Creating a mount point name
-        '''
-        The order of checking the mount is reversed to ensure that there 
-        is no problem mounting with already preserved mountpoints by the system.
-        For example, if sda is already mounted by the system for some port address, then the access to 
-        mount the sda for USB drive won't exist. So, the further options will be checked, by in the mean time, the sda in the 
-        alphabetical order will throw an error and stop the code. Therefore, the mount check is initiated with sdc.
-        Only three /dev/sd* are used, as atmost three ports will be used simultaneously. 
-        '''
-        if isMountsdc:
-            mountCommand = " sudo mount /dev/sdc1 /media/Velodyne_LiDAR"   
-        elif isMountsdb:
-            mountCommand = " sudo mount /dev/sdb1 /media/Velodyne_LiDAR"
-        elif isMountsda:
-            mountCommand = " sudo mount /dev/sda1 /media/Velodyne_LiDAR"
-            
-        os.system(mountCommand)        
+        except:
+            pass
+    elif isMountPointName==False:      
+        os.system("sudo mkdir /media/Velodyne_LiDAR") # Creating a mount point name
+    '''
+    The order of checking the mount is reversed to ensure that there 
+    is no problem mounting with already preserved mountpoints by the system.
+    For example, if sda is already mounted by the system for some port address, then the access to 
+    mount the sda for USB drive won't exist. So, the further options will be checked, by in the mean time, the sda in the 
+    alphabetical order will throw an error and stop the code. Therefore, the mount check is initiated with sdc.
+    Only three /dev/sd* are used, as atmost three ports will be used simultaneously. 
+    '''
+    if isMountsdc:
+        mountCommand = " sudo mount /dev/sdc1 /media/Velodyne_LiDAR"   
+    elif isMountsdb:
+        mountCommand = " sudo mount /dev/sdb1 /media/Velodyne_LiDAR"
+    elif isMountsda:
+        mountCommand = " sudo mount /dev/sda1 /media/Velodyne_LiDAR"
+        
+    os.system(mountCommand)        
 
 def main(args=None):
     rclpy.init(args=args)
@@ -198,16 +198,18 @@ def main(args=None):
     
     pc_writer() # Running this method to mount the USB drive properly.
     fd = open("pc_data.txt","wt") # Creating the actual file 
-	
+
     try:
-    	while rclpy.ok():
-    	    rclpy.spin(node)
-    
+        rclpy.spin(node)
     except KeyboardInterrupt:
-    	fd.close()
-    	os.system("sudo mv ~/pc_data.txt /media/Velodyne_LiDAR > /dev/null  2>&1")
-    	os.system(" echo '\e[33mSuccessfully saved the PointCloud data to the USB drive\e[0m' ")
-    	pass
+        fd.close()
+        os.system("sudo mv ~/pc_data.txt /media/Velodyne_LiDAR > /dev/null  2>&1")
+        os.system(" echo '\e[33mSuccessfully saved the PointCloud data to the USB drive\
+                  if one inserted...\e[0m' ")
+
+        pass     
+    except Exception as e:
+        node.get_logger().error(str(e))
     	
     rclpy.shutdown()
 
