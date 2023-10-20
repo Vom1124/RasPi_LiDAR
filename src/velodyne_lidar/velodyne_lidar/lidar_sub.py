@@ -85,7 +85,9 @@ class LiDAR(Node):
         Thos data is saved onto a .txt file to visualize and/or get the entire field of view 
         of the environment.
         '''
-        print("\033[33:5m" + "LiDAR connection successful...\033[0m")
+        if self.counter==0:
+            print("\035[5m" + "LiDAR connection successful...\033[0m")
+
         pc_txt = "Receiving point cloud points from /velodyne_points and saving ...\n"
         self.counter+=1
         
