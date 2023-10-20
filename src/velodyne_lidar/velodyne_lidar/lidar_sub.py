@@ -200,8 +200,6 @@ def main(args=None):
     
     pc_writer() # Running this method to mount the USB drive properly.
     fd = open("/media/Velodyne_LiDAR/pc_data.txt","wt") # Creating the actual file 
-    fd.write("\n\n==================================="+
-        "===End of one spin:===================================\n\n\n")
     rclpy.spin(node)    	
     rclpy.shutdown()
     fd.close()
