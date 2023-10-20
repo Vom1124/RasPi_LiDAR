@@ -18,7 +18,7 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 
   3) This is an optional step. Installing the ros2-numpy for viewing/parsing the output  point cloud data in the python node. This is used as a test library to extract and test, although a different custom code modified from the source code of the ros2_numpy is implemented. 
 
-          pip3 install ros2-numpy
+    pip3 install ros2-numpy
 
 ### Setting Up:  
    Clone this directory as a ROS2 workspace and build it.
