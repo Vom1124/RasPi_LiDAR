@@ -86,7 +86,7 @@ class LiDAR(Node):
         of the environment.
         '''
         if self.counter==0:
-            print("\035[5m" + "LiDAR connection successful...\033[0m")
+            print("\033[35:5m" + "LiDAR connection successful...\033[0m")
 
         pc_txt = "Receiving point cloud points from /velodyne_points and saving ...\n"
         self.counter+=1
