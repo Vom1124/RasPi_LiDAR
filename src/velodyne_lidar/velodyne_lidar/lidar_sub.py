@@ -88,40 +88,37 @@ class LiDAR(Node):
         pc_txt = "Receiving point cloud points from /velodyne_points and saving ...\n"
         self.counter+=1
         
-        if pc2_msg==[]:
-            print("Waiting for the LiDAR Connection, please check if the LiDAR is connected properly")
-        else:
-            pc2_data = velodyne_pc2_to_array.pointcloud2_to_array(pc2_msg)
-            
-            # xyz = pc2.get("xyz")           
-            
-            #------- Converting point cloud data (x,y & z to range and angles: refer to the manual)
-            # pc_to_range_data = xyz_to_range_data.xyz_to_range_and_angle(xyz)
-            # column_names = list(pc_to_range_data)
-            # range_data = np.concatenate((pc_to_range_data.get("range"),
-            #                             pc_to_range_data.get("alpha"),
-            #                             pc_to_range_data.get("omega")), axis=1)
-            # range_data = pd.DataFrame(range_data, columns=column_names)
-            # pd.set_option('display.max_rows', None)# to display all the rows in the DataFrame
-            #------------------done converting the point cloud data to range data
+        pc2_data = velodyne_pc2_to_array.pointcloud2_to_array(pc2_msg)
+        
+        # xyz = pc2.get("xyz")           
+        
+        #------- Converting point cloud data (x,y & z to range and angles: refer to the manual)
+        # pc_to_range_data = xyz_to_range_data.xyz_to_range_and_angle(xyz)
+        # column_names = list(pc_to_range_data)
+        # range_data = np.concatenate((pc_to_range_data.get("range"),
+        #                             pc_to_range_data.get("alpha"),
+        #                             pc_to_range_data.get("omega")), axis=1)
+        # range_data = pd.DataFrame(range_data, columns=column_names)
+        # pd.set_option('display.max_rows', None)# to display all the rows in the DataFrame
+        #------------------done converting the point cloud data to range data
 
-            np.set_printoptions(threshold=sys.maxsize)# to display all the points in the array
-            fd.write("\n\n XYZIR : {}".format(pc2_data))
-            fd.write("\n\n==================================="+
-            "===End of one spin:{}===================================\n\n\n".format(self.counter))
-            self.get_logger().info("\033[95m" + pc_txt)
-            time.sleep(0.1)
-            #------------Extracting the depth of the obstacle from 
-            # the Laser #14 at -1 angle of increment.
-            xyz_nav =  lasers_to_single_laserscan.single_laserscan(pc2_data, 14) 
-            distance_msg = Float32()
-            distance_to_obstacle = np.mean(xyz_nav[:,0]).astype('float')
-            distance_msg.data = distance_to_obstacle
-            time.sleep(0.5)
-            
-            distance_txt = "Obstacle Distance calculated and publishing to example_interface topic"
-            self.get_logger().info("\033[95m" + distance_txt)
-            self.distance_publisher.publish(distance_msg)
+        np.set_printoptions(threshold=sys.maxsize)# to display all the points in the array
+        fd.write("\n\n XYZIR : {}".format(pc2_data))
+        fd.write("\n\n==================================="+
+        "===End of one spin:{}===================================\n\n\n".format(self.counter))
+        self.get_logger().info("\033[95m" + pc_txt)
+        time.sleep(0.1)
+        #------------Extracting the depth of the obstacle from 
+        # the Laser #14 at -1 angle of increment.
+        xyz_nav =  lasers_to_single_laserscan.single_laserscan(pc2_data, 14) 
+        distance_msg = Float32()
+        distance_to_obstacle = np.mean(xyz_nav[:,0]).astype('float')
+        distance_msg.data = distance_to_obstacle
+        time.sleep(0.5)
+        
+        distance_txt = "Obstacle Distance calculated and publishing to example_interface topic"
+        self.get_logger().info("\033[95m" + distance_txt)
+        self.distance_publisher.publish(distance_msg)
         
                 
     def scan_callback(self, scan_msg):
