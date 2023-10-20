@@ -173,7 +173,7 @@ def pc_writer():
     alphabetical order will throw an error and stop the code. Therefore, the mount check is initiated with sdc.
     Only three /dev/sd* are used, as atmost three ports will be used simultaneously. 
     '''
-    os.system("sudo chown vom /dev/sd*")
+    #os.system("sudo chown vom /dev/sd*")
     if isMountsdd:
         mountCommand = "sudo mount /dev/sdd1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
     elif isMountsdc:
