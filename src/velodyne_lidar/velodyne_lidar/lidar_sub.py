@@ -27,6 +27,7 @@ sudoPassword = "123"
 os.system("echo '\e[7m \e[91m Logging in as sudo user...\e[0m'")
 os.system("echo %s | sudo -i --stdin" %(sudoPassword))
 os.system("echo '\n \e[5m \e[32m*Successfully logged in as sudo user!*\e[0m'")
+current_username = os.getlogin()
 
 class LiDAR(Node): 
     def __init__(self):
@@ -46,9 +47,12 @@ class LiDAR(Node):
         print("\033[36:4m" + fmt_head_txt)
 
         # Subscribing to the PointCloud2 data from the velodyne transform node
+
+        print("\033[33:4m" + "Waiting for the LiDAR to publish data, please check the connection\033[0m")
         self.subscribePointCloud = self.create_subscription(PointCloud2, 
                                     '/velodyne_points', self.pc_callback, 10)    
         self.subscribePointCloud # preventing unused variable   
+        
         
         # -- Creating Publisher to publish the calculated distance 
         self.distance_publisher = self.create_publisher(Float32, "ObstacleDistance", 10)
@@ -83,37 +87,41 @@ class LiDAR(Node):
         '''
         pc_txt = "Receiving point cloud points from /velodyne_points and saving ...\n"
         self.counter+=1
-        pc2_data = velodyne_pc2_to_array.pointcloud2_to_array(pc2_msg)
         
-        # xyz = pc2.get("xyz")           
-        
-        #------- Converting point cloud data (x,y & z to range and angles: refer to the manual)
-        # pc_to_range_data = xyz_to_range_data.xyz_to_range_and_angle(xyz)
-        # column_names = list(pc_to_range_data)
-        # range_data = np.concatenate((pc_to_range_data.get("range"),
-        #                             pc_to_range_data.get("alpha"),
-        #                             pc_to_range_data.get("omega")), axis=1)
-        # range_data = pd.DataFrame(range_data, columns=column_names)
-        # pd.set_option('display.max_rows', None)# to display all the rows in the DataFrame
-        #------------------done converting the point cloud data to range data
+        if pc2_msg==[]:
+            print("Waiting for the LiDAR Connection, please check if the LiDAR is connected properly")
+        else:
+            pc2_data = velodyne_pc2_to_array.pointcloud2_to_array(pc2_msg)
+            
+            # xyz = pc2.get("xyz")           
+            
+            #------- Converting point cloud data (x,y & z to range and angles: refer to the manual)
+            # pc_to_range_data = xyz_to_range_data.xyz_to_range_and_angle(xyz)
+            # column_names = list(pc_to_range_data)
+            # range_data = np.concatenate((pc_to_range_data.get("range"),
+            #                             pc_to_range_data.get("alpha"),
+            #                             pc_to_range_data.get("omega")), axis=1)
+            # range_data = pd.DataFrame(range_data, columns=column_names)
+            # pd.set_option('display.max_rows', None)# to display all the rows in the DataFrame
+            #------------------done converting the point cloud data to range data
 
-        np.set_printoptions(threshold=sys.maxsize)# to display all the points in the array
-        fd.write("\n\n XYZIR : {}".format(pc2_data))
-        fd.write("\n\n==================================="+
-        "===End of one spin:{}===================================\n\n\n".format(self.counter))
-        self.get_logger().info("\033[95m" + pc_txt)
-        time.sleep(0.1)
-        #------------Extracting the depth of the obstacle from 
-        # the Laser #14 at -1 angle of increment.
-        xyz_nav =  lasers_to_single_laserscan.single_laserscan(pc2_data, 14) 
-        distance_msg = Float32()
-        distance_to_obstacle = np.mean(xyz_nav[:,0]).astype('float')
-        distance_msg.data = distance_to_obstacle
-        time.sleep(2)
-        
-        distance_txt = "Obstacle Distance calculated and publishing to example_interface topic"
-        self.get_logger().info("\033[95m" + distance_txt)
-        self.distance_publisher.publish(distance_msg)
+            np.set_printoptions(threshold=sys.maxsize)# to display all the points in the array
+            fd.write("\n\n XYZIR : {}".format(pc2_data))
+            fd.write("\n\n==================================="+
+            "===End of one spin:{}===================================\n\n\n".format(self.counter))
+            self.get_logger().info("\033[95m" + pc_txt)
+            time.sleep(0.1)
+            #------------Extracting the depth of the obstacle from 
+            # the Laser #14 at -1 angle of increment.
+            xyz_nav =  lasers_to_single_laserscan.single_laserscan(pc2_data, 14) 
+            distance_msg = Float32()
+            distance_to_obstacle = np.mean(xyz_nav[:,0]).astype('float')
+            distance_msg.data = distance_to_obstacle
+            time.sleep(0.5)
+            
+            distance_txt = "Obstacle Distance calculated and publishing to example_interface topic"
+            self.get_logger().info("\033[95m" + distance_txt)
+            self.distance_publisher.publish(distance_msg)
         
                 
     def scan_callback(self, scan_msg):
@@ -155,10 +163,13 @@ def pc_writer():
         
     #Checking if mount point name already exists (Need to create only on the first run).
     isMountPointName = os.path.exists("/media/Velodyne_LiDAR")
-    os.system(" sudo chmod -R a+x /media")
+
+    os.system("sudo chown %s:%s /media/"%(current_username,current_username))
+    os.system("sudo chown %s:%s /dev/sd*"%(current_username,current_username))
         
     if isMountPointName==True:
         try:
+            os.system("sudo umount -f /media/")
             os.system("sudo rm -r /media/*")
             os.system("mkdir /media/Velodyne_LiDAR") # Creating a mount point name
         except:
@@ -173,7 +184,6 @@ def pc_writer():
     alphabetical order will throw an error and stop the code. Therefore, the mount check is initiated with sdc.
     Only three /dev/sd* are used, as atmost three ports will be used simultaneously. 
     '''
-    #os.system("sudo chown vom /dev/sd*")
     if isMountsdd:
         mountCommand = "sudo mount /dev/sdd1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
     elif isMountsdc:
