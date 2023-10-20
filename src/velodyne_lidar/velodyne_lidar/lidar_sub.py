@@ -166,10 +166,6 @@ def pc_writer():
         
     if isMountPointName==True:
         try:
-            try:
-                os.system("sudo umount -f /media/")
-            except:
-                pass
             os.system("sudo rm -r /media/*")
             os.system("mkdir /media/Velodyne_LiDAR") # Creating a mount point name
         except:
