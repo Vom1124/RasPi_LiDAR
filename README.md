@@ -9,12 +9,13 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 
   1) Setup the Velodyne LiDAR VLP16 to communicate with the computer running in ROS2. Use the link below to setup the Ethernet connection, which is section 1. Ignore the rest of the sections and continue here to finish the setup. Remember to verify the connection configuration by accessing the LiDAR's network address in any browser.
 
-          http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20Velodyne%20VLP16
-     Note: The above step can be replicated to other models of the Velodyne LiDARs with very similar setup (there are also similar libraries/resources available). 
+    http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20Velodyne%20VLP16
+     
+   Note: The above step can be replicated to other models of the Velodyne LiDARs with very similar setup (there are also similar libraries/resources available). 
   
   2) Installing ROS drivers for the Velodyne LiDAR using the following command. Assuming that RViz is already installed to the latest version.
 
-          sudo apt-get install ros-humble-velodyne
+    sudo apt-get install ros-humble-velodyne
 
   3) This is an optional step. Installing the ros2-numpy for viewing/parsing the output  point cloud data in the python node. This is used as a test library to extract and test, although a different custom code modified from the source code of the ros2_numpy is implemented. 
 
@@ -23,7 +24,7 @@ There are some pre-setup to connect the Velodyne LiDAR to the computer using Eth
 ### Setting Up:  
    Clone this directory as a ROS2 workspace and build it.
      
-       git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
+    git clone https://github.com/Vom1124/RasPi_LiDAR.git && \
        cd RasPi_LiDAR && \
        colcon build --symlink-install
 
@@ -49,16 +50,16 @@ The LiDAR parameters can be varied as desired in the VLP16-velodyne_transform_no
 
 Once the pre-setup and cloning the workspace are done, open a new terminal and launch the Velodyne LiDAR using the launch file located under /opt/ros/humble/share/velodyne/launch/velodyne-all-nodes-VLP16-launch.py as
 
-          ros2 launch velodyne velodyne-all-nodes-VLP16-launch.py
+    ros2 launch velodyne velodyne-all-nodes-VLP16-launch.py
 
           
 Now, open another terminal window and start the ros2 node as shown below to acquire the point cloud points and write it to a .txt file. 
 
-          ros2 run velodyne_lidar lidar_read
+    ros2 run velodyne_lidar lidar_read
 The lidar_read node use the lidar_sub.py script under src/velodyne_lidar/velodyne_lidar, which automatically tries to login as sudo user using the password "123" (from line 143). Change it accordingly for different systems.
 The available ros topics can be seen using
 
-          ros2 topic list -t
+     ros2 topic list -t
 which should now show velodyne_packets for raw data packets, velodyne_points for displaying point cloud, and ObstacleDetection for getting the distance data from the obstacle(s) in the front.
 
 The Velodyne LiDAR should now successfully run continuously and subsribe to the pointcloud and save it in a text file named "range_data.txt" under the current directory from where the node is run. Along with it, the obstacle distance from the front of the LiDAR should be published to the ObstacleDistance topic, which can be subsribed for navigation.
@@ -75,7 +76,7 @@ The point cloud can also be visualized using RViz software with the following st
 
 While the velodyne launch file is still running, open a new terminal window and run the below code to start RViz with the velodyne as fixed frame.
 
-        ros2 run rviz2 rviz2 -f velodyne
+    ros2 run rviz2 rviz2 -f velodyne
 
 
 
