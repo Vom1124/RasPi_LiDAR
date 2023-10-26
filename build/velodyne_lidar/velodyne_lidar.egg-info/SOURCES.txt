@@ -3,7 +3,11 @@ setup.cfg
 setup.py
 resource/velodyne_lidar
 velodyne_lidar/__init__.py
-velodyne_lidar/test.py
+velodyne_lidar/lasers_to_single_laserscan.py
+velodyne_lidar/laserscan_pc2_to_array.py
+velodyne_lidar/lidar_sub.py
+velodyne_lidar/velodyne_pc2_to_array.py
+velodyne_lidar/xyz_to_range_data.py
 velodyne_lidar.egg-info/PKG-INFO
 velodyne_lidar.egg-info/SOURCES.txt
 velodyne_lidar.egg-info/dependency_links.txt

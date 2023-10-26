@@ -1,0 +1,16 @@
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/launch/lidar.launch.py
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/ament_index/resource_index/package_run_dependencies/velodyne_lidar_bringup
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/ament_index/resource_index/parent_prefix_path/velodyne_lidar_bringup
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/environment/ament_prefix_path.sh
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/environment/ament_prefix_path.dsv
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/environment/path.sh
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/environment/path.dsv
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/local_setup.bash
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/local_setup.sh
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/local_setup.zsh
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/local_setup.dsv
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/package.dsv
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/ament_index/resource_index/packages/velodyne_lidar_bringup
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/cmake/velodyne_lidar_bringupConfig.cmake
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/cmake/velodyne_lidar_bringupConfig-version.cmake
+/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/share/velodyne_lidar_bringup/package.xml

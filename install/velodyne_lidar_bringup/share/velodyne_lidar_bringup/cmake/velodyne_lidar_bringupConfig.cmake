@@ -1,0 +1,1 @@
+/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_core/velodyne_lidar_bringupConfig.cmake
