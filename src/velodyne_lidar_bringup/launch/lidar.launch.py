@@ -6,7 +6,8 @@ def generate_launch_description():
     
     lidar_node = Node(       
         package="velodyne_lidar",
-        executable="lidar_read" 
+        executable="lidar_read",
+        output='screen'
     )
     
     ld.add_action(lidar_node)

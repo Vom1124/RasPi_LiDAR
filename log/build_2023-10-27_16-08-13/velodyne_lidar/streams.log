@@ -1,0 +1,46 @@
+[1.030s] Invoking command in '/home/vom/RasPi_LiDAR/build/velodyne_lidar': PYTHONPATH=/home/vom/RasPi_LiDAR/build/velodyne_lidar/prefix_override:/home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --uninstall --editable --build-directory /home/vom/RasPi_LiDAR/build/velodyne_lidar/build
+[1.303s] running develop
+[1.468s] Removing /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne-lidar.egg-link (link to .)
+[1.498s] Invoked command in '/home/vom/RasPi_LiDAR/build/velodyne_lidar' returned '0': PYTHONPATH=/home/vom/RasPi_LiDAR/build/velodyne_lidar/prefix_override:/home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --uninstall --editable --build-directory /home/vom/RasPi_LiDAR/build/velodyne_lidar/build
+[1.499s] Invoking command in '/home/vom/RasPi_LiDAR/src/velodyne_lidar': PYTHONPATH=/home/vom/RasPi_LiDAR/build/velodyne_lidar/prefix_override:/home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/velodyne_lidar build --build-base /home/vom/RasPi_LiDAR/build/velodyne_lidar/build install --record /home/vom/RasPi_LiDAR/build/velodyne_lidar/install.log --single-version-externally-managed
+[1.736s] running egg_info
+[1.736s] writing ../../build/velodyne_lidar/velodyne_lidar.egg-info/PKG-INFO
+[1.736s] writing dependency_links to ../../build/velodyne_lidar/velodyne_lidar.egg-info/dependency_links.txt
+[1.737s] writing entry points to ../../build/velodyne_lidar/velodyne_lidar.egg-info/entry_points.txt
+[1.737s] writing requirements to ../../build/velodyne_lidar/velodyne_lidar.egg-info/requires.txt
+[1.737s] writing top-level names to ../../build/velodyne_lidar/velodyne_lidar.egg-info/top_level.txt
+[1.741s] reading manifest file '../../build/velodyne_lidar/velodyne_lidar.egg-info/SOURCES.txt'
+[1.742s] writing manifest file '../../build/velodyne_lidar/velodyne_lidar.egg-info/SOURCES.txt'
+[1.742s] running build
+[1.742s] running build_py
+[1.742s] creating /home/vom/RasPi_LiDAR/build/velodyne_lidar/build
+[1.742s] creating /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib
+[1.742s] creating /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar
+[1.742s] copying velodyne_lidar/lidar_sub.py -> /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar
+[1.743s] copying velodyne_lidar/__init__.py -> /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar
+[1.743s] copying velodyne_lidar/velodyne_pc2_to_array.py -> /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar
+[1.743s] copying velodyne_lidar/laserscan_pc2_to_array.py -> /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar
+[1.744s] copying velodyne_lidar/lasers_to_single_laserscan.py -> /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar
+[1.745s] copying velodyne_lidar/xyz_to_range_data.py -> /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar
+[1.745s] running install
+[1.745s] running install_lib
+[1.746s] creating /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar
+[1.746s] copying /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar/lidar_sub.py -> /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar
+[1.746s] copying /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar/__init__.py -> /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar
+[1.746s] copying /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar/velodyne_pc2_to_array.py -> /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar
+[1.746s] copying /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar/laserscan_pc2_to_array.py -> /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar
+[1.746s] copying /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar/lasers_to_single_laserscan.py -> /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar
+[1.747s] copying /home/vom/RasPi_LiDAR/build/velodyne_lidar/build/lib/velodyne_lidar/xyz_to_range_data.py -> /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar
+[1.747s] byte-compiling /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar/lidar_sub.py to lidar_sub.cpython-310.pyc
+[1.748s] byte-compiling /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar/__init__.py to __init__.cpython-310.pyc
+[1.748s] byte-compiling /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar/velodyne_pc2_to_array.py to velodyne_pc2_to_array.cpython-310.pyc
+[1.748s] byte-compiling /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar/laserscan_pc2_to_array.py to laserscan_pc2_to_array.cpython-310.pyc
+[1.749s] byte-compiling /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar/lasers_to_single_laserscan.py to lasers_to_single_laserscan.cpython-310.pyc
+[1.749s] byte-compiling /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar/xyz_to_range_data.py to xyz_to_range_data.cpython-310.pyc
+[1.749s] running install_data
+[1.750s] running install_egg_info
+[1.752s] Copying ../../build/velodyne_lidar/velodyne_lidar.egg-info to /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne_lidar-0.0.0-py3.10.egg-info
+[1.753s] running install_scripts
+[1.771s] Installing lidar_read script to /home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/velodyne_lidar
+[1.772s] writing list of installed files to '/home/vom/RasPi_LiDAR/build/velodyne_lidar/install.log'
+[1.790s] Invoked command in '/home/vom/RasPi_LiDAR/src/velodyne_lidar' returned '0': PYTHONPATH=/home/vom/RasPi_LiDAR/build/velodyne_lidar/prefix_override:/home/vom/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/velodyne_lidar build --build-base /home/vom/RasPi_LiDAR/build/velodyne_lidar/build install --record /home/vom/RasPi_LiDAR/build/velodyne_lidar/install.log --single-version-externally-managed

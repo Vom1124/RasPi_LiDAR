@@ -1,1 +1,1 @@
-/home/vom/ros2_ws/install/velodyne_lidar:/opt/ros/humble
+/home/vom/ros2_ws/install/yansa_vision_bringup:/home/vom/ros2_ws/install/velodyne_lidar_bringup:/home/vom/ros2_ws/install/velodyne_lidar:/home/vom/ros2_ws/install/rgb_camera:/home/vom/ros2_ws/install/ir_camera:/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup:/home/vom/RasPi_LiDAR/install/velodyne_lidar:/home/vom/Nano_Vision/install/yansa_vision_bringup:/home/vom/Nano_Vision/install/rgb_camera:/home/vom/Nano_Vision/install/ir_camera:/opt/ros/humble
