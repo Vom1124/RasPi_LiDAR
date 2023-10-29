@@ -232,7 +232,7 @@ def main(args=None):
     else:
         os.system("echo '\e[33mINFO: Mount status FAILURE: no USB is inserted."\
         "The point cloud data will be saved to the home directory.\e[0m'")
-        fd = open("/home/vom/pc_data.txt","wt") # Creating the actual file 
+        fd = open("pc_data.txt","wt") # Creating the actual file 
     
     rclpy.spin(node)    	
     rclpy.shutdown()
