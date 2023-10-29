@@ -44,7 +44,7 @@ class LiDAR(Node):
         # Subscribing to the raw laser scan data from only one laser 
         #    (possibly from the ring number 0 from 0-15 lasers)
         # self.subscribeRawData = self.create_subscription(VelodyneScan, 
-                                    # '/velodyne_packets', self.raw_callback, 10)
+        #                             '/velodyne_packets', self.raw_callback, 10)
         
         head_txt = "\nPoint Cloud Generation Initiated\n"
         fmt_head_txt = head_txt.center(150,'=')
@@ -53,9 +53,9 @@ class LiDAR(Node):
         # Subscribing to the PointCloud2 data from the velodyne transform node
 
         print("\033[33:4m" + "Waiting for the LiDAR to publish data, please check the connection\033[0m")
-        # self.subscribePointCloud = self.create_subscription(PointCloud2, 
-                                    # '/velodyne_points', self.pc_callback, 10)    
-        # self.subscribePointCloud # preventing unused variable   
+        self.subscribePointCloud = self.create_subscription(PointCloud2, 
+                                    '/velodyne_points', self.pc_callback, 10)    
+        self.subscribePointCloud # preventing unused variable   
         
         
         # -- Creating Publisher to publish the calculated distance 
@@ -69,17 +69,6 @@ class LiDAR(Node):
         # self.subscribeLaserScan # Preserving the unused variable
         # self.laser_projector = LaserProjection() # Creating an object for laser_projector library  
         
-        self.publisher_ = self.create_publisher(String, 'topic', 10)
-        timer_period = 0.5  # seconds
-        self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0      
-    def timer_callback(self):
-        msg = String()
-        msg.data = 'Hello World: %d' % self.i
-        self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%s"' % msg.data)
-        fd.write("Test of {}\n\n".format(msg.data))
-        self.i += 1
         
     def raw_callback(self, data):
         '''
