@@ -204,12 +204,11 @@ def pc_writer():
         Only three /dev/sd* are used, as atmost three ports will be used simultaneously. 
         '''
         if isMountsdd:
-            mountCommand = "sudo mount /dev/sdd1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
+            mountCommand = "echo 123| sudo -S mount /dev/sdd1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
         elif isMountsdc:
-            mountCommand = "sudo mount /dev/sdc1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"   
+            mountCommand = "echo 123| sudo -S mount /dev/sdc1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"   
         elif isMountsdb:
-            mountCommand = "echo 123| sudo -S mount /dev/sdb1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
-        
+            mountCommand = "echo 123| sudo -S mount /dev/sdb1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"    
         elif isMountsda:
             mountCommand = "echo 123 | sudo -S mount /dev/sda1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
             
