@@ -1,1 +1,1 @@
-/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup/launch/lidar.launch.py
+/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup/launch/lidar.launch.py

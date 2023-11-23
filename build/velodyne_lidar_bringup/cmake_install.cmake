@@ -1,8 +1,8 @@
-# Install script for directory: /home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup
+# Install script for directory: /home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup")
+  set(CMAKE_INSTALL_PREFIX "/home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar_bringup")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
+  include("/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -54,5 +54,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

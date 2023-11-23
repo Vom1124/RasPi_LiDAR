@@ -1,13 +1,6 @@
 package.xml
 setup.cfg
 setup.py
-../../build/velodyne_lidar/velodyne_lidar.egg-info/PKG-INFO
-../../build/velodyne_lidar/velodyne_lidar.egg-info/SOURCES.txt
-../../build/velodyne_lidar/velodyne_lidar.egg-info/dependency_links.txt
-../../build/velodyne_lidar/velodyne_lidar.egg-info/entry_points.txt
-../../build/velodyne_lidar/velodyne_lidar.egg-info/requires.txt
-../../build/velodyne_lidar/velodyne_lidar.egg-info/top_level.txt
-../../build/velodyne_lidar/velodyne_lidar.egg-info/zip-safe
 resource/velodyne_lidar
 velodyne_lidar/__init__.py
 velodyne_lidar/lasers_to_single_laserscan.py

@@ -1,0 +1,24 @@
+[0.721s] Invoking command in '/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar': PYTHONPATH=/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar/prefix_override:/home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar/build --no-deps install_data
+[0.984s] running develop
+[1.142s] running egg_info
+[1.142s] creating velodyne_lidar.egg-info
+[1.143s] writing velodyne_lidar.egg-info/PKG-INFO
+[1.143s] writing dependency_links to velodyne_lidar.egg-info/dependency_links.txt
+[1.143s] writing entry points to velodyne_lidar.egg-info/entry_points.txt
+[1.143s] writing requirements to velodyne_lidar.egg-info/requires.txt
+[1.143s] writing top-level names to velodyne_lidar.egg-info/top_level.txt
+[1.143s] writing manifest file 'velodyne_lidar.egg-info/SOURCES.txt'
+[1.146s] reading manifest file 'velodyne_lidar.egg-info/SOURCES.txt'
+[1.147s] writing manifest file 'velodyne_lidar.egg-info/SOURCES.txt'
+[1.148s] running build_ext
+[1.149s] Creating /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne-lidar.egg-link (link to .)
+[1.149s] Installing lidar_read script to /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/lib/velodyne_lidar
+[1.150s] 
+[1.150s] Installed /home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar
+[1.150s] running install_data
+[1.150s] creating /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/ament_index
+[1.151s] creating /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/ament_index/resource_index
+[1.151s] creating /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/ament_index/resource_index/packages
+[1.151s] copying resource/velodyne_lidar -> /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/ament_index/resource_index/packages
+[1.151s] copying package.xml -> /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/velodyne_lidar
+[1.187s] Invoked command in '/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar' returned '0': PYTHONPATH=/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar/prefix_override:/home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar/build --no-deps install_data

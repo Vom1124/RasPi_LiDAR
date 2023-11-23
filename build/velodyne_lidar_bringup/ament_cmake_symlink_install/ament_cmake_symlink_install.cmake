@@ -23,7 +23,7 @@ function(ament_cmake_symlink_install_directory cmake_current_source_dir)
 
   # make destination absolute path and ensure that it exists
   if(NOT IS_ABSOLUTE "${ARG_DESTINATION}")
-    set(ARG_DESTINATION "/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/${ARG_DESTINATION}")
+    set(ARG_DESTINATION "/home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar_bringup/${ARG_DESTINATION}")
   endif()
   if(NOT EXISTS "${ARG_DESTINATION}")
     file(MAKE_DIRECTORY "${ARG_DESTINATION}")
@@ -123,7 +123,7 @@ function(ament_cmake_symlink_install_files cmake_current_source_dir)
 
   # make destination an absolute path and ensure that it exists
   if(NOT IS_ABSOLUTE "${ARG_DESTINATION}")
-    set(ARG_DESTINATION "/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/${ARG_DESTINATION}")
+    set(ARG_DESTINATION "/home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar_bringup/${ARG_DESTINATION}")
   endif()
   if(NOT EXISTS "${ARG_DESTINATION}")
     file(MAKE_DIRECTORY "${ARG_DESTINATION}")
@@ -181,7 +181,7 @@ function(ament_cmake_symlink_install_programs cmake_current_source_dir)
 
   # make destination an absolute path and ensure that it exists
   if(NOT IS_ABSOLUTE "${ARG_DESTINATION}")
-    set(ARG_DESTINATION "/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/${ARG_DESTINATION}")
+    set(ARG_DESTINATION "/home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar_bringup/${ARG_DESTINATION}")
   endif()
   if(NOT EXISTS "${ARG_DESTINATION}")
     file(MAKE_DIRECTORY "${ARG_DESTINATION}")
@@ -251,7 +251,7 @@ function(ament_cmake_symlink_install_targets)
 
     # make destination an absolute path and ensure that it exists
     if(NOT IS_ABSOLUTE "${destination}")
-      set(destination "/home/vom/RasPi_LiDAR/install/velodyne_lidar_bringup/${destination}")
+      set(destination "/home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar_bringup/${destination}")
     endif()
     if(NOT EXISTS "${destination}")
       file(MAKE_DIRECTORY "${destination}")
@@ -311,46 +311,46 @@ message(STATUS "Execute custom install script")
 # begin of custom install code
 
 # install(DIRECTORY "launch" "DESTINATION" "share/velodyne_lidar_bringup")
-ament_cmake_symlink_install_directory("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" DIRECTORY "launch" "DESTINATION" "share/velodyne_lidar_bringup")
+ament_cmake_symlink_install_directory("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" DIRECTORY "launch" "DESTINATION" "share/velodyne_lidar_bringup")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
 
 # install(FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/velodyne_lidar_bringup/environment")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/velodyne_lidar_bringup/environment")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/velodyne_lidar_bringup/environment")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/velodyne_lidar_bringup/environment")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/velodyne_lidar_bringup/environment")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/velodyne_lidar_bringup/environment")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/velodyne_lidar_bringup/environment")
 
 # install(FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/velodyne_lidar_bringup/environment")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/velodyne_lidar_bringup/environment")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/velodyne_lidar_bringup/environment")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/velodyne_lidar_bringup/environment")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/velodyne_lidar_bringup/environment")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/velodyne_lidar_bringup/environment")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/velodyne_lidar_bringup/environment")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/velodyne_lidar_bringup")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/velodyne_lidar_bringup")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/velodyne_lidar_bringup")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/velodyne_lidar_bringup")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/velodyne_lidar_bringup")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/velodyne_lidar_bringup")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/velodyne_lidar_bringup")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/velodyne_lidar_bringup")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/velodyne_lidar_bringup")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/velodyne_lidar_bringup")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/velodyne_lidar_bringup")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/velodyne_lidar_bringup")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/velodyne_lidar_bringup")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/velodyne_lidar_bringup")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/velodyne_lidar_bringup")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/velodyne_lidar_bringup")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/velodyne_lidar_bringup")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/velodyne_lidar_bringup")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/velodyne_lidar_bringup")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/velodyne_lidar_bringup")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/packages/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/packages")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/packages/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/packages")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/packages/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/packages")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_index/share/ament_index/resource_index/packages/velodyne_lidar_bringup" "DESTINATION" "share/ament_index/resource_index/packages")
 
-# install(FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_core/velodyne_lidar_bringupConfig.cmake" "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_core/velodyne_lidar_bringupConfig-version.cmake" "DESTINATION" "share/velodyne_lidar_bringup/cmake")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_core/velodyne_lidar_bringupConfig.cmake" "/home/vom/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_core/velodyne_lidar_bringupConfig-version.cmake" "DESTINATION" "share/velodyne_lidar_bringup/cmake")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_core/velodyne_lidar_bringupConfig.cmake" "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_core/velodyne_lidar_bringupConfig-version.cmake" "DESTINATION" "share/velodyne_lidar_bringup/cmake")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_core/velodyne_lidar_bringupConfig.cmake" "/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar_bringup/ament_cmake_core/velodyne_lidar_bringupConfig-version.cmake" "DESTINATION" "share/velodyne_lidar_bringup/cmake")
 
-# install(FILES "/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup/package.xml" "DESTINATION" "share/velodyne_lidar_bringup")
-ament_cmake_symlink_install_files("/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/RasPi_LiDAR/src/velodyne_lidar_bringup/package.xml" "DESTINATION" "share/velodyne_lidar_bringup")
+# install(FILES "/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup/package.xml" "DESTINATION" "share/velodyne_lidar_bringup")
+ament_cmake_symlink_install_files("/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup" FILES "/home/vom/ros2_ws/RasPi_LiDAR/src/velodyne_lidar_bringup/package.xml" "DESTINATION" "share/velodyne_lidar_bringup")

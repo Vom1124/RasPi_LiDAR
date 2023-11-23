@@ -1,0 +1,22 @@
+running develop
+running egg_info
+creating velodyne_lidar.egg-info
+writing velodyne_lidar.egg-info/PKG-INFO
+writing dependency_links to velodyne_lidar.egg-info/dependency_links.txt
+writing entry points to velodyne_lidar.egg-info/entry_points.txt
+writing requirements to velodyne_lidar.egg-info/requires.txt
+writing top-level names to velodyne_lidar.egg-info/top_level.txt
+writing manifest file 'velodyne_lidar.egg-info/SOURCES.txt'
+reading manifest file 'velodyne_lidar.egg-info/SOURCES.txt'
+writing manifest file 'velodyne_lidar.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/lib/python3.10/site-packages/velodyne-lidar.egg-link (link to .)
+Installing lidar_read script to /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/lib/velodyne_lidar
+
+Installed /home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar
+running install_data
+creating /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/ament_index
+creating /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/ament_index/resource_index
+creating /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/ament_index/resource_index/packages
+copying resource/velodyne_lidar -> /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/ament_index/resource_index/packages
+copying package.xml -> /home/vom/ros2_ws/RasPi_LiDAR/install/velodyne_lidar/share/velodyne_lidar

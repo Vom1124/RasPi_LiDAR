@@ -1,1 +1,1 @@
-prepend-non-duplicate;PYTHONPATH;/home/vom/RasPi_LiDAR/build/velodyne_lidar
+prepend-non-duplicate;PYTHONPATH;/home/vom/ros2_ws/RasPi_LiDAR/build/velodyne_lidar

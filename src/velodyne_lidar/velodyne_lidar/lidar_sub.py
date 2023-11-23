@@ -2,6 +2,7 @@ import os
 import sys 
 import time
 import subprocess 
+import getpass
 
 import rclpy
 from rclpy.node import  Node
@@ -23,16 +24,9 @@ from example_interfaces.msg import Float32
 
 from std_msgs.msg import String
 
-# Logging in as sudo user
-os.system("sudo -k") # First exiting the sudo mode if already in sudo mode
-sudoPassword = "123"
-os.system("echo '\e[7m \e[91m Logging in as sudo user...\e[0m'")
-os.system("echo %s | sudo -i --stdin" %(sudoPassword))
-os.system("echo '\n \e[5m \e[32m*Successfully logged in as sudo user!*\e[0m'")
-current_username = os.getlogin()
-
-mountStatus = False
-
+global mountStatus
+    
+    
 class LiDAR(Node): 
     def __init__(self):
         super().__init__('PointCloud')
@@ -44,22 +38,22 @@ class LiDAR(Node):
         # Subscribing to the raw laser scan data from only one laser 
         #    (possibly from the ring number 0 from 0-15 lasers)
         # self.subscribeRawData = self.create_subscription(VelodyneScan, 
-        #                             '/velodyne_packets', self.raw_callback, 10)
+        #                             '/velodyne_packets_L', self.raw_callback, 10)
         
         head_txt = "\nPoint Cloud Generation Initiated\n"
         fmt_head_txt = head_txt.center(150,'=')
-        print("\033[36:4m" + fmt_head_txt)
+        self.get_logger().info("\033[36:4m" + fmt_head_txt)
 
         # Subscribing to the PointCloud2 data from the velodyne transform node
 
-        print("\033[33:4m" + "Waiting for the LiDAR to publish data, please check the connection\033[0m")
+        self.get_logger().info("\033[33:4m" + "Waiting for the LiDAR to publish data, please check the connection\033[0m")
         self.subscribePointCloud = self.create_subscription(PointCloud2, 
-                                    '/velodyne_points', self.pc_callback, 10)    
+                                    '/velodyne_points_L', self.pc_callback, 10)    
         self.subscribePointCloud # preventing unused variable   
         
         
         # -- Creating Publisher to publish the calculated distance 
-        self.distance_publisher = self.create_publisher(Float32, "ObstacleDistance", 10)
+        self.distance_publisher = self.create_publisher(Float32, "ObstacleDistance_L", 10)
         
         '''
         Check the LaserScan message type and velodyne point cloud to verify the correct Laser number
@@ -91,7 +85,7 @@ class LiDAR(Node):
         of the environment.
         '''
         if self.counter==0:
-            print("\033[36;5m" + "LiDAR connection successful...\033[0m")
+            self.get_logger().info("\033[36;5m" + "\nLiDAR connection successful...\033[0m")
 
         pc_txt = "Receiving point cloud points from /velodyne_points and saving ...\n"
         self.counter+=1
@@ -116,11 +110,24 @@ class LiDAR(Node):
         "===End of one spin:{}===================================\n\n\n".format(self.counter))
         self.get_logger().info("\033[95m" + pc_txt)
         time.sleep(0.1)
+        
         #------------Extracting the depth of the obstacle from 
-        # the Laser #14 at -1 angle of increment.
+        # the Laser #14 at -1 angle of increment scan.
         xyz_nav =  lasers_to_single_laserscan.single_laserscan(pc2_data, 14) 
+        
+        #Using Inter-Quartile range to remove the unwanted range data
+        Q1 = np.quantile(xyz_nav, 0.25)
+        Q3 = np.quantile(xyz_nav, 0.75)
+        IQR = Q3-Q1
+        upper_bound= Q3 #+ 0.75*IQR
+        lower_bound = Q1 #-0.75*IQR
+        xyz_nav = xyz_nav[xyz_nav[:,0]>lower_bound]
+        xyz_nav = xyz_nav[xyz_nav[:,0]<upper_bound]
+        
+        #Creating a distance message
         distance_msg = Float32()
         distance_to_obstacle = np.mean(xyz_nav[:,0]).astype('float')
+        #self.get_logger().info("\n \33[0m distance="+ str(distance_to_obstacle))
         distance_msg.data = distance_to_obstacle
         time.sleep(0.5)
         
@@ -150,7 +157,15 @@ def pc_writer():
     This section of code helps to create a file inside the USB drive inserted...
     Requires to create a mount point name and then unmount existing drives and re-mount the drive...
     '''
-
+    # Logging in as sudo user
+    os.system("sudo -k") # First exiting the sudo mode if already in sudo mode
+    sudoPassword = "123"
+    os.system("echo '\e[7m \e[91m Logging in as sudo user...\e[0m'")
+    os.system("echo %s | sudo -s --stdin" %(sudoPassword))
+    os.system("echo '\e[5m \e[32m*Successfully logged in as sudo user!*\e[0m'")
+    current_username = getpass.getuser()
+    global mountStatus
+    os.system("echo %s | sudo -s --stdin" %(sudoPassword))
     isMountsda = os.path.exists("/dev/sda1")
     isMountsdb = os.path.exists("/dev/sdb1")
     isMountsdc = os.path.exists("/dev/sdc1")
@@ -159,22 +174,22 @@ def pc_writer():
     print("sda status" + str(isMountsda) + "\nsdb status" + \
         str(isMountsdb) + "\nsdc status" + str(isMountsdc) + \
              "\nsdd status" + str(isMountsdd))
-    
+        
     if isMountsda==True or isMountsdb==True or isMountsdc==True:   
         mountStatus = True
         
         #Removing/Unmounting (clearing) already existing mountpoint to avoid overlap in the mount status        
-        os.system("sudo umount -f /dev/sd* > /dev/null  2>&1") # the output will be null.       
+        os.system("echo 123| sudo -S umount -f /dev/sd* > /dev/null  2>&1") # the output will be null.       
         
         #Checking if mount point name already exists (Need to create only on the first run).
         isMountPointName = os.path.exists("/media/Velodyne_LiDAR")
 
-        os.system("sudo chown %s:%s /media/"%(current_username,current_username))
-        os.system("sudo chown %s:%s /dev/sd*"%(current_username,current_username))
+        os.system("echo 123 | sudo -S chown %s:%s /media/"%(current_username,current_username))
+        os.system("echo 123 | sudo -S chown %s:%s /dev/sd*"%(current_username,current_username))
             
         if isMountPointName==True:
             try:
-                os.system("sudo rm -r /media/*")
+                os.system("echo 123 | sudo -S rm -r /media/*")
                 os.system("mkdir /media/Velodyne_LiDAR") # Creating a mount point name
             except:
                 pass
@@ -193,13 +208,16 @@ def pc_writer():
         elif isMountsdc:
             mountCommand = "sudo mount /dev/sdc1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"   
         elif isMountsdb:
-            mountCommand = "sudo mount /dev/sdb1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
+            mountCommand = "echo 123| sudo -S mount /dev/sdb1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
         
         elif isMountsda:
-            mountCommand = "sudo mount /dev/sda1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
+            mountCommand = "echo 123 | sudo -S mount /dev/sda1 /media/Velodyne_LiDAR -o umask=022,rw,uid=1000,gid=1000"
+            
         os.system(mountCommand)    
         
     else:
+        
+        mountStatus = False
         return
     
         
@@ -208,12 +226,9 @@ def pc_writer():
 def main(args=None):
     rclpy.init(args=args)
     global fd # Assigning the output file data name to be global so that the node can access it.
-    global mountStatus
-    mountStatus=False
+
     node = LiDAR()
-    
     pc_writer() # Running this method to mount the USB drive properly.
-    
     if mountStatus==True:
         os.system("echo '\e[33mINFO: Mount status success: a USB drive is found."\
         "The point cloud data will be saved to the inserted USB.\e[0m'")
